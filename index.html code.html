@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myopia control with Multifocal Contact Lenses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: 'Roboto', sans-serif; line-height: 1.6; background: #f5f8fa; color: #111;}
+    a {text-decoration: none; color: inherit;}
+    img {max-width: 100%; display: block; border-radius: 8px; cursor: pointer;}
+
+    /* Sticky navigation */
+    nav {position: sticky; top: 0; background: #ffffff; padding: 1rem 2rem; display: flex; gap: 2rem; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 100;}
+    nav a {color: #6A0DAD; font-weight: 600; cursor: pointer;}
+    nav a:hover {text-decoration: underline;}
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem;
+      background: #f2e6ff; /* Light purple shade */
+      border-radius: 15px;
+    }
+    .hero .text {flex: 1 1 400px;}
+    .hero .text h1 {
+      font-size: 2rem; 
+      margin-bottom: 1rem;
+      color: #6A0DAD;
+    }
+    .hero .text .btn {display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; border-radius: 5px; font-weight: 600; cursor: pointer;}
+    .hero .btn-primary {background: #6A0DAD; color: white;}
+    .hero .btn-secondary {background: white; border: 2px solid #6A0DAD; color: #6A0DAD;}
+    .hero .image {flex: 1 1 400px; text-align: center;}
+    .hero .image img {max-width: 100%;}
+
+    /* Key info styling */
+    .key-info {
+      background: #ffffff;
+      border-left: 6px solid #6A0DAD;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .key-info h2 {
+      font-size: 1.2rem;
+      color: #6A0DAD;
+      margin-bottom: 0.75rem;
+    }
+    .key-info ul {
+      list-style: disc inside;
+      color: #333;
+      font-weight: 500;
+    }
+    .key-info li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Infographic modal */
+    .modal {display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000;}
+    .modal img {max-width: 90%; max-height: 90%;}
+    .modal-close {position: absolute; top: 20px; right: 30px; color:white; font-size:2rem; cursor:pointer;}
+
+    /* Section style */
+    section {max-width: 1000px; margin: 3rem auto; padding: 0 1rem;}
+    section h2 {font-size: 1.8rem; margin-bottom: 1rem; color: #6A0DAD;}
+    section p {margin-bottom: 1rem; color: #333;}
+    .cards {display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;}
+    .card {background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+    .card h3 {margin-bottom: 0.5rem; color: #008080;}
+    .card img {margin-top: 0.5rem; background: #e0f7f7; height: 150px; object-fit: cover;}
+
+    /* Pros and Cons list */
+    .pros-cons ul {list-style: none; padding-left: 0;}
+    .pros-cons li {margin-bottom: 0.5rem; font-weight: 500;}
+    .pros {color: green;}
+    .cons {color: red;}
+
+    /* Footer */
+    footer {text-align: center; padding: 2rem; background: #6A0DAD; color: white; margin-top: 3rem;}
+    
+    /* Smooth scrolling */
+    html {scroll-behavior: smooth;}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+<nav>
+  <a href="#infographic">Infographic</a>
+  <a href="#what-is-myopia">What is Myopia</a>
+  <a href="#why-it-matters">Why it matters</a>
+  <a href="#treatment-options">Treatment options</a>
+  <a href="#multifocal-lenses">Multifocal lenses</a>
+  <a href="#FAQ">FAQ</a>
+  <a href="#resources">References</a>
+</nav>
+
+
+  <!-- Hero / Infographic Section -->
+  <section class="hero" id="infographic">
+    <div class="text">
+      <h1>Understand & Slow Myopia in Children</h1>
+
+      <!-- Key info section -->
+      <div class="key-info">
+        <h2>Is your child struggling to see clearly? <br>Signs of myopia to watch out for:</h2>
+        <ul>
+          <li>Squinting when looking at distant objects</li>
+          <li>Sitting very close to the TV or holding books close</li>
+          <li>Complaints of headaches or tired eyes</li>
+          <li>Difficulty seeing the whiteboard at school</li>
+          <li>Frequent changes in glasses prescription</li>
+        </ul>
+      </div>
+
+      <a href="infographic.png" download class="btn btn-primary">Download Infographic</a>
+    </div>
+    <div class="image">
+      <img src="infographic.png" alt="Myopia Infographic" class="clickable-img">
+    </div>
+  </section>
+
+  <div class="modal" id="modal">
+    <span class="modal-close" id="modal-close">&times;</span>
+    <img src="" alt="Fullscreen Image" id="modal-img">
+  </div>
+<!-- What is Myopia Section -->
+<section id="what-is-myopia">
+  <h2>What is Myopia?</h2>
+  <div class="myopia-container">
+    <div class="myopia-text">
+      <p>
+        Myopia, also called nearsightedness, is a common condition where distant objects appear blurry while 
+        close objects can be seen clearly. It occurs when the eye grows too long,
+        causing light to focus in front of the retina instead of on it.
+      </p>
+      <p>
+        Estimated 5 billion people will be myopia by 2050! There is no "safe" level of myopia, so the higher the script, the higher risks of complications mentioned below.
+      </p>
+<p>
+        Myopia typically develops in childhood and can progress over time. Understanding it early 
+        helps in choosing effective strategies to slow its progression.
+      </p>
+    </div>
+   <div class="myopia-image">
+  <img src="myopia.png" alt="Illustration of myopia eye" class="myopia-img clickable-img">
+</div>
+  </div>
+<!-- Comparison with Other Refractive Errors -->
+<div class="refractive-dropdown">
+  <div class="dropdown-header">🔍 How does it compare to other refractive errors?</div>
+  <div class="dropdown-content">
+    <div class="refractive-container">
+      <div class="refractive-text">
+        <p><strong>Hyperopia (Farsightedness):</strong> Distant objects are clear, close objects blurry.</p>
+        <p><strong>Astigmatism:</strong> Blurred/distorted vision due to irregular cornea or lens.</p>
+        <p><strong>Presbyopia:</strong> Age-related difficulty focusing on close objects (after ~40).</p>
+      </div>
+
+      <div class="refractive-images">
+        <div class="refractive-img">
+          <img src="hyperopia.png" alt="Hyperopia Illustration" class="clickable-img">
+          <p>Hyperopia</p>
+        </div>
+        <div class="refractive-img">
+          <img src="astigmatism.png" alt="Astigmatism Illustration" class="clickable-img">
+          <p>Astigmatism</p>
+        </div>
+        <div class="refractive-img">
+          <img src="presbyopia.png" alt="Presbyopia Illustration" class="clickable-img">
+          <p>Presbyopia</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .refractive-dropdown {
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    background: #f2e6ff; /* light purple shade */
+    border: 1px solid #e0d0f5;
+  }
+
+  .dropdown-header {
+    padding: 1rem;
+    font-weight: 600;
+    color: #6A0DAD;
+    cursor: pointer;
+    position: relative;
+    background: #e9d9ff;
+  }
+
+  .dropdown-header::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .dropdown-header.active::after {
+    content: '–';
+  }
+
+  .dropdown-content {
+    display: none;
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    line-height: 1.5;
+    color: #333;
+    background: #fdfaff;
+  }
+
+  .refractive-container {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .refractive-text {
+    flex: 1 1 300px;
+  }
+
+  .refractive-images {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 0 0 100px; /* narrow right column */
+    align-items: center;
+  }
+
+  .refractive-img img {
+    width: 100%;
+    max-width: 80px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #e0f7f7;
+    object-fit: cover;
+  }
+
+  .refractive-img p {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    color: #333;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .refractive-container {
+      flex-direction: column;
+    }
+    .refractive-images {
+      flex-direction: row;
+      justify-content: flex-start;
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<script>
+  // Dropdown toggle
+  const dropdownHeader = document.querySelector('.dropdown-header');
+  const dropdownContent = document.querySelector('.dropdown-content');
+
+  dropdownHeader.addEventListener('click', () => {
+    dropdownHeader.classList.toggle('active');
+    dropdownContent.style.display = 
+      dropdownContent.style.display === 'block' ? 'none' : 'block';
+  });
+</script>
+
+
+</section>
+
+<style>
+  #what-is-myopia {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  #what-is-myopia h2 {
+    font-size: 1.8rem;
+    color: #6A0DAD;
+    margin-bottom: 1rem;
+  }
+
+  .myopia-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .myopia-text {
+    flex: 1 1 300px; /* Text grows to fill space */
+  }
+
+  .myopia-text p {
+    margin-bottom: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .myopia-image {
+    flex: 0 0 250px; /* Fixed image width to the right */
+  }
+
+  .myopia-image img {
+    width: 100%;
+    border-radius: 10px;
+    background: #e0f7f7;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* On small screens, stack text and image */
+  @media (max-width: 600px) {
+    .myopia-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .myopia-image {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+  <!-- Why it matters Section -->
+  <section id="why-it-matters">
+    <h2>Why Myopia Matters</h2>
+    <p>Progressive myopia increases the risk of certain eye conditions. These visuals help explain what each one means:</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Retinal Detachment</h3>
+        <p>Stretching of the retina in longer eyes can lead to thinning, tears, or detachment. Sudden floaters, flashes, or a curtain over vision need urgent care.</p>
+        <img src="detach.png" alt="Retinal Detachment Illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Myopic Maculopathy</h3>
+        <p>Damage to the macula (sharp central vision) can reduce detailed vision. Regular eye checks help detect early changes.</p>
+        <img src="macula.png" alt="Myopic Maculopathy Illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Open-Angle Glaucoma</h3>
+        <p>Myopia increases the chance of optic nerve damage over time. Pressure checks and imaging guide monitoring.</p>
+        <img src="angle.png" alt="Glaucoma Illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Early Cataracts</h3>
+        <p>Lens clouding can appear earlier in myopic individuals. Symptoms include blur, glare at night, and reduced contrast.</p>
+        <img src="cataract.png" alt="Cataract Illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Higher Risk of Retinal Degenerations</h3>
+        <p>Conditions such as lattice degeneration and pavingstone changes occur more often in myopia, increasing long-term risk for complications.</p>
+        <img src="lattice.png" alt="Retinal Degeneration Illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Lifestyle Impact</h3>
+        <p>Uncorrected myopia can affect academics, risk amblyopia or strabismus, impact self-image, and add costs and inconvenience to daily life.</p>
+        <img src="squint.png" alt="Lifestyle Impact Illustration" class="clickable-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Treatment Options Section -->
+  <section id="treatment-options">
+    <h2>Treatment Options</h2>
+    <p>Several strategies exist to slow myopia progression and maintain healthy vision:</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Glasses</h3>
+        <p>Specially designed lenses can reduce eye strain and slow progression such as Hoya MiyoSmart and Essilor Stellest.</p>
+        <img src="glasses.png" alt="Children wearing glasses" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Contact Lenses</h3>
+        <p>Multifocal and orthokeratology lenses help correct vision and manage eye growth.</p>
+        <img src="k.png" alt="Children wearing contact lenses" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Low-Dose Atropine Drops</h3>
+        <p>Safe, low-dose eye drops can slow the progression of myopia in children under professional supervision.</p>
+        <img src="atropine.png" alt="Eye drops illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Outdoor Time</h3>
+        <p>Regular outdoor activity has been shown to reduce onset of myopia in children.</p>
+        <img src="kids.png" alt="Children playing outside" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Vision Hygiene</h3>
+        <p>Limiting near-work time and ensuring breaks reduces eye strain.</p>
+        <img src="screen.png" alt="Child reading with good posture" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Combination Approaches</h3>
+        <p>Using glasses, contacts, outdoor time, and drops together can provide stronger protection against myopia progression.</p>
+        <img src="combo.png" alt="Combination treatment illustration" class="clickable-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Multifocal Lenses Section -->
+  <section id="multifocal-lenses">
+    <h2>Multifocal Lenses</h2>
+    <p>Multifocal contact lenses provide clear vision at multiple distances and are effective in controlling myopia progression:</p>
+    <div class="cards">
+      <div class="card">
+        <h3>How they work</h3>
+        <p>Multifocal lenses have different zones for seeing at various distances (near, intermediate and distance). The central zone provides clear distance vision, while the outer zones reduce the signal that causes the eye to elongate, therefore slowing the progression of myopia.</p>
+        <img src="mf.png" alt="Multifocal lens diagram" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Clinical findings</h3>
+        <p>Clinical studies show that multifocal contact lenses can reduce the rate of eye growth by 30-50% in children.</p>
+        <img src="treat.png" alt="Benefits illustration" class="clickable-img">
+      </div>
+      <div class="card pros-cons">
+        <h3>Pros and Cons</h3>
+        <ul>
+          <li class="pros">✅ Full distance correction supporting daily activities</li>
+          <li class="pros">✅ Clinically proven to slow myopia progression</li>
+          <li class="pros">✅ Compatible as a combination approach with other control methods</li>
+          <li class="cons">❌ Requires proper hygiene to reduce risk of infections. The lenses must be properly cleaned, inserted, removed and then stored in solution.</li>
+          <li class="cons">❌ Higher cost compared to single vision lenses.</li>
+<li class="cons">❌ Not suitable for all children and initial adaptation period.</li>
+        </ul>
+      </div>
+    </div>
+<!-- Research Evidence Expandable Section -->
+<div class="research-section">
+  <div class="research-header">📖 Look more in research studies and evidence</div>
+  <div class="research-content">
+    <p>
+      Here we need to add research evidence, stats, graphs etc... 
+    </p>
+    <ul>
+      <li><strong>Study A:</strong> Add stats/Graphs here?</li>
+      <li><strong>Study B:</strong> Comparison of studies perhaps?</li>
+      <li><strong>Study C:</strong> More stats/evidence...</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .research-section {
+    margin-top: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .research-header {
+    padding: 1rem;
+    font-weight: 600;
+    color: #6A0DAD;
+    cursor: pointer;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+  }
+
+  .research-header::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .research-header.active::after {
+    content: '–';
+  }
+
+  .research-content {
+    display: none;
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    line-height: 1.6;
+    background: #fdfaff;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .research-content ul {
+    margin: 0.5rem 0 0 1.5rem;
+  }
+
+  .research-content li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+<script>
+  // Toggle research section
+  const researchHeader = document.querySelector('.research-header');
+  const researchContent = document.querySelector('.research-content');
+
+  researchHeader.addEventListener('click', () => {
+    researchHeader.classList.toggle('active');
+    researchContent.style.display = 
+      researchContent.style.display === 'block' ? 'none' : 'block';
+  });
+</script>
+
+  </section>
+
+  
+<!-- FAQ Section -->
+<section id="FAQ">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Are multifocal contact lenses safe for children?</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      Yes, with proper hygiene and supervision, multifocal lenses are safe for children. 
+      The risk of infection is very low when lenses are cared for correctly.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>At what age can my child start wearing contact lenses?</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      Most children can start around 8–12 years old, depending on their maturity and ability 
+      to handle lens care responsibly. Adults can also use multifocal contact lenses but they are more common in aiding with presbyopia management rather than myopia.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>Do multifocal lenses cure myopia?</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      No, they don’t cure myopia, but they slow its progression and provide clear vision 
+      at different distances.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>What is the difference between daily and monthly contact lenses?</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      Dialy lenses are worn once and discarded at the end of the day, offering convenience and lower infection risk. Monthly lenses are reused for up to 30 days but it does required properly cleaning and storing habits. Both treatment options has been shown to reduce myopia progression by 30-50%. Daily lenses may be more effective while monthly lenses are cheaper.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>How to use multifocal contact lenses safely?</span>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      Wash your hands thoroughly with soap, rinse and dry with a clean lint-free towel before applying the lenses. Monthly lenses should be cleaned daily with a multipurpose solution and stored in a specialised case with contact lens disinfection solution. Follow your eyecare professional's advice and instructions.
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .faq-question {
+    padding: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #6A0DAD;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-answer {
+    display: none;
+    padding: 1rem;
+    color: #333;
+  }
+  .faq-question.active + .faq-answer {
+    display: block;
+  }
+  .faq-question.active .faq-toggle {
+    transform: rotate(45deg);
+  }
+  .faq-toggle {
+    transition: transform 0.2s ease;
+    font-size: 1.2rem;
+  }
+</style>
+
+<script>
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('active');
+      const answer = q.nextElementSibling;
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+</script>
+
+<!-- Resources Section -->
+  <section id="resources">
+    <h2>References</h2>
+    <p>Learn more about myopia management from trusted sources:</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Research Studies</h3>
+        <p>Links to published studies supporting myopia control strategies.</p>
+        <img src="studies.png" alt="Research illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Professional Guidelines</h3>
+        <p>Recommendations from optometry and ophthalmology organizations.</p>
+        <img src="guidelines.png" alt="Guidelines illustration" class="clickable-img">
+      </div>
+      <div class="card">
+        <h3>Printable Infographic</h3>
+        <p>Downloadable infographic for reference or sharing with friends and families.</p>
+        <img src="infographic.png" alt="Infographic thumbnail" class="clickable-img">
+      </div>
+    </div>
+  </section>
+  <footer>
+    &copy; Myopia Infographic - Group 7
+  </footer>
+
+  <script>
+    // Modal for all clickable images
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalClose = document.getElementById('modal-close');
+    const clickableImgs = document.querySelectorAll('.clickable-img');
+
+    clickableImgs.forEach(img => {
+      img.onclick = () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      }
+    });
+
+    modalClose.onclick = () => { modal.style.display = 'none'; }
+    window.onclick = (e) => { if(e.target == modal) modal.style.display = 'none'; }
+  </script>
+
+</body>
+</html>
