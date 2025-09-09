@@ -91,10 +91,13 @@
 
   <!-- Navigation -->
 <nav>
+  <a href="#infographic">Infographic</a>
   <a href="#what-is-myopia">What is Myopia</a>
   <a href="#why-it-matters">Why it matters</a>
   <a href="#treatment-options">Treatment options</a>
+  <a href="#multifocal-lenses">Multifocal lenses</a>
   <a href="#FAQ">FAQ</a>
+  <a href="#resources">References</a>
 </nav>
 
 
@@ -619,27 +622,17 @@
 </script>
 
 <!-- Resources Section -->
-  <section id="resources">
-    <h2>References</h2>
-    <p>Learn more about myopia management from trusted sources:</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Research Studies</h3>
-        <p>Links to published studies supporting myopia control strategies.</p>
-        <img src="studies.png" alt="Research illustration" class="clickable-img">
-      </div>
-      <div class="card">
-        <h3>Professional Guidelines</h3>
-        <p>Recommendations from optometry and ophthalmology organizations.</p>
-        <img src="guidelines.png" alt="Guidelines illustration" class="clickable-img">
-      </div>
-      <div class="card">
-        <h3>Printable Infographic</h3>
-        <p>Downloadable infographic for reference or sharing with friends and families.</p>
-        <img src="infographic.png" alt="Infographic thumbnail" class="clickable-img">
-      </div>
-    </div>
-  </section>
+ <!-- Resources Section -->
+<section id="resources">
+  <h2>References</h2>
+  <ul>
+    <li><a href="#" target="_blank">Reference 1</a></li>
+    <li><a href="#" target="_blank">Reference 2</a></li>
+    <li><a href="#" target="_blank">Reference 3</a></li>
+    <li><a href="#" target="_blank">Reference 4</a></li>
+  </ul>
+</section>
+
   <footer>
     &copy; Myopia Infographic - Group 7
   </footer>
@@ -662,6 +655,23 @@
     modalClose.onclick = () => { modal.style.display = 'none'; }
     window.onclick = (e) => { if(e.target == modal) modal.style.display = 'none'; }
   </script>
+<style>
+/* Make nav scrollable on small screens */
+@media (max-width: 600px) {
+  nav {
+    overflow-x: auto;       /* allow horizontal scroll */
+    white-space: nowrap;    /* prevent wrapping to next line */
+    padding: 1rem;          /* reduce padding slightly */
+    gap: 1rem;              /* reduce gap between headings */
+  }
+
+  nav a {
+    display: inline-block;  /* ensure inline-block for scrolling */
+    min-width: 25%;         /* 4 items max visible at once */
+    text-align: center;     /* center text in each nav item */
+  }
+}
+</style>
 
 </body>
 </html>
